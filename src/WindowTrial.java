@@ -10,6 +10,9 @@ import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 import javax.swing.JComboBox;
 import javax.swing.JSlider;
+import javax.swing.JTabbedPane;
+import javax.swing.JList;
+import javax.swing.ListSelectionModel;
 import java.awt.*;
 
 public class WindowTrial extends JFrame {
@@ -41,10 +44,11 @@ public class WindowTrial extends JFrame {
         JToolBar toolBar = new JToolBar("Інструментальна панель");
         toolBar.add(new JButton("Кнопка 1"));
         toolBar.add(new JButton("Кнопка 2"));
-        toolBar.addSeparator();toolBar.add(new JButton("Кнопка 3"));
+        toolBar.addSeparator();
+        toolBar.add(new JButton("Кнопка 3"));
         panel.add(toolBar);
 
-        String[] elements = new String[] {"Василь", "Петро","<html><font size = +1 color = yellow>Іван</font>"};
+        String[] elements = new String[]{"Василь", "Петро", "<html><font size = +1 color = yellow>Іван</font>"};
         JComboBox combo = new JComboBox(elements);
         combo.setSelectedIndex(1);
         panel.add(combo);
@@ -55,8 +59,20 @@ public class WindowTrial extends JFrame {
         slider.setPaintTicks(true);//позначки
         slider.setPaintLabels(true);//числа під позначками
         slider.setSnapToTicks(true);//прилипання до позначки
-
         panel.add(slider);
+
+        JTabbedPane table = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
+        table.addTab("123", combo);
+        table.addTab("321", slider);
+        panel.add(table);
+
+        Object[] elements2 = new Object[] {"Монітор", "<html><font color = red>Клавіатура", "Мишка"};
+        JList list = new JList(elements2);
+        list.setVisibleRowCount(5);
+        list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);//дозволяє вибирати сусідні елементи разом
+        list.setSelectedIndices(new int[] {1,2});//автоматично вибирає елементи
+        panel.add(list);
+
         setContentPane(panel);
         setSize(800, 800);
     }
