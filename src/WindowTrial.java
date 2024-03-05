@@ -8,7 +8,7 @@ public class WindowTrial extends JFrame {
         super("Пробне вікно");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(2,3,5,10));
+        panel.setLayout(new FlowLayout());//GridLayout(2,3,5,10));
         panel.add(new JButton("Кнопка"));
         panel.add(new JButton("+"));
         panel.add(new JButton("-"));
