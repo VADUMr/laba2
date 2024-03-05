@@ -6,6 +6,8 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
+import javax.swing.JScrollPane;
+import javax.swing.JToolBar;
 import java.awt.*;
 
 public class WindowTrial extends JFrame {
@@ -25,14 +27,21 @@ public class WindowTrial extends JFrame {
         JPasswordField passwordField = new JPasswordField(20);
         passwordField.setEchoChar('?');
         passwordField.setText("пароль");
-        JTextArea textArea = new JTextArea(3, 20);
+        JTextArea textArea = new JTextArea(5, 20);
         textArea.setLineWrap(true);
         textArea.setWrapStyleWord(true);
-        for (int i = 0; i <= 3; i++)
+        for (int i = 0; i <= 20; i++)
             textArea.append("Область для вводу тексту");
         panel.add(textField, BorderLayout.NORTH);
-        panel.add(textArea);
-        panel.add(passwordField, BorderLayout.SOUTH);
+        panel.add(new JScrollPane(textArea));
+        panel.add(passwordField, BorderLayout.SOUTH)
+        ;
+        JToolBar toolBar = new JToolBar("Інструментальна панель");
+        toolBar.add(new JButton("Кнопка 1"));
+        toolBar.add(new JButton("Кнопка 2"));
+        toolBar.addSeparator();toolBar.add(new JButton("Кнопка 3"));
+        panel.add(toolBar);
+
         setContentPane(panel);
         setSize(800, 800);
     }
