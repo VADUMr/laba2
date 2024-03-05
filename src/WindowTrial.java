@@ -8,6 +8,8 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextArea;
 import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
+import javax.swing.JComboBox;
+import javax.swing.JSlider;
 import java.awt.*;
 
 public class WindowTrial extends JFrame {
@@ -42,6 +44,19 @@ public class WindowTrial extends JFrame {
         toolBar.addSeparator();toolBar.add(new JButton("Кнопка 3"));
         panel.add(toolBar);
 
+        String[] elements = new String[] {"Василь", "Петро","<html><font size = +1 color = yellow>Іван</font>"};
+        JComboBox combo = new JComboBox(elements);
+        combo.setSelectedIndex(1);
+        panel.add(combo);
+
+        JSlider slider = new JSlider(JSlider.HORIZONTAL, 75, 100, 75);
+        slider.setMajorTickSpacing(5);
+        slider.setMinorTickSpacing(1);
+        slider.setPaintTicks(true);//позначки
+        slider.setPaintLabels(true);//числа під позначками
+        slider.setSnapToTicks(true);//прилипання до позначки
+
+        panel.add(slider);
         setContentPane(panel);
         setSize(800, 800);
     }
