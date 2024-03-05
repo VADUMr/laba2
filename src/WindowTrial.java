@@ -77,7 +77,9 @@ public class WindowTrial extends JFrame {
         JButton button = new JButton("Інформація");
         JOptionPane.showMessageDialog(button, "Непотрібно було нажимати цю кнопку",
                 "Інформація", JOptionPane.WARNING_MESSAGE);
-
+        if (JOptionPane.showConfirmDialog(button, "ви впевнені що хочете вийти?") ==
+                JOptionPane.YES_OPTION)
+            System.exit(0);
         setContentPane(panel);
         setSize(800, 800);
     }
