@@ -40,8 +40,8 @@ public class WindowTrial extends JFrame {
             textArea.append("Область для вводу тексту");
         panel.add(textField, BorderLayout.NORTH);
         panel.add(new JScrollPane(textArea));
-        panel.add(passwordField, BorderLayout.SOUTH)
-        ;
+        panel.add(passwordField, BorderLayout.SOUTH);
+
         JToolBar toolBar = new JToolBar("Інструментальна панель");
         toolBar.add(new JButton("Кнопка 1"));
         toolBar.add(new JButton("Кнопка 2"));
