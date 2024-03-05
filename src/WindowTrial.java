@@ -13,6 +13,7 @@ import javax.swing.JSlider;
 import javax.swing.JTabbedPane;
 import javax.swing.JList;
 import javax.swing.ListSelectionModel;
+import javax.swing.JOptionPane;
 import java.awt.*;
 
 public class WindowTrial extends JFrame {
@@ -72,6 +73,10 @@ public class WindowTrial extends JFrame {
         list.setSelectionMode(ListSelectionModel.SINGLE_INTERVAL_SELECTION);//дозволяє вибирати сусідні елементи разом
         list.setSelectedIndices(new int[] {1,2});//автоматично вибирає елементи
         panel.add(list);
+
+        JButton button = new JButton("Інформація");
+        JOptionPane.showMessageDialog(button, "Непотрібно було нажимати цю кнопку",
+                "Інформація", JOptionPane.WARNING_MESSAGE);
 
         setContentPane(panel);
         setSize(800, 800);
