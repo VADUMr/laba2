@@ -61,7 +61,7 @@ public class WindowTrial extends JFrame {
         slider.setSnapToTicks(true);//прилипання до позначки
         panel.add(slider);
 
-        JTabbedPane table = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.SCROLL_TAB_LAYOUT);
+        JTabbedPane table = new JTabbedPane(JTabbedPane.TOP, JTabbedPane.WRAP_TAB_LAYOUT);
         table.addTab("123", combo);
         table.addTab("321", slider);
         panel.add(table);
