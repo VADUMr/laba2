@@ -4,38 +4,68 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JOptionPane;
+import javax.swing.JLabel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Arrays;
+import java.util.Objects;
+
 public class LoginSystem extends JFrame {
     LoginSystem(){
         super("Вікно входу");
         setDefaultCloseOperation(EXIT_ON_CLOSE);
         JPanel panel = new JPanel();
-        panel.setLayout(new GridLayout(3,1,0,1));
+        panel.setLayout(new GridLayout(3,2,1,0));
 
-        JTextField textField = new JTextField("Текстове поле", 40);
+        JLabel Namelabel = new JLabel("Введіть свій нік");
+        Namelabel.setOpaque(true); // включаємо непрозорий фон
+        Namelabel.setBackground(Color.blue);
+        Namelabel.setHorizontalAlignment(JTextField.CENTER);
+        panel.add(Namelabel);
+
+        JTextField textField = new JTextField();
+        textField.setBorder(null);
         textField.setCaretColor(Color.yellow);
         textField.setBackground(Color.blue);
         textField.setHorizontalAlignment(JTextField.CENTER);
+        panel.add(textField);
+
+        JLabel Passwordlabel = new JLabel("Введіть свій пароль");
+        Passwordlabel.setOpaque(true); // включаємо непрозорий фон
+        Passwordlabel.setBackground(Color.yellow);
+        Passwordlabel.setHorizontalAlignment(JTextField.CENTER);
+        panel.add(Passwordlabel);
 
         JPasswordField passwordField = new JPasswordField(40);
+        passwordField.setBorder(null);
         passwordField.setCaretColor(Color.blue);
         passwordField.setBackground(Color.yellow);
         passwordField.setEchoChar('*');
-        passwordField.setText("password");
         passwordField.setHorizontalAlignment(JPasswordField.CENTER);
+        panel.add(passwordField);
 
-        panel.add(textField, BorderLayout.NORTH);
-        panel.add(passwordField, BorderLayout.SOUTH);
-
-        JButton button = new JButton("Відправити");
-        button.setAlignmentX(Component.CENTER_ALIGNMENT);
-        button.addActionListener(new ActionListener() {
+        JButton SubmitButton = new JButton("Відправити");
+        SubmitButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                JOptionPane.showMessageDialog(button, "Дані успішно відправлені","ОК",
-                        JOptionPane.INFORMATION_MESSAGE);} });
-        panel.add(button);
+                if(textField.getText().equals("Вадим") &&
+                        Arrays.equals(passwordField.getPassword(), "123".toCharArray())){
+                    JOptionPane.showMessageDialog(SubmitButton, "Ви ввійшли в акаунт","ОК",
+                            JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    JOptionPane.showMessageDialog(SubmitButton, "Данні для входу неправильні","О НІ",
+                            JOptionPane.WARNING_MESSAGE);
+                }
+                } });
+        panel.add(SubmitButton);
+
+        JButton ClearButton = new JButton("Очистити");
+        ClearButton.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                passwordField.setText("");
+                textField.setText("");
+            } });
+        panel.add(ClearButton);
 
         setContentPane(panel);
         setSize(800, 400);

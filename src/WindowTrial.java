@@ -15,6 +15,8 @@ import javax.swing.JList;
 import javax.swing.ListSelectionModel;
 import javax.swing.JOptionPane;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class WindowTrial extends JFrame {
     WindowTrial() {
@@ -75,11 +77,20 @@ public class WindowTrial extends JFrame {
         panel.add(list);
 
         JButton button = new JButton("Інформація");
-        JOptionPane.showMessageDialog(button, "Непотрібно було нажимати цю кнопку",
-                "Інформація", JOptionPane.WARNING_MESSAGE);
+        button.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                JOptionPane.showMessageDialog(button, "Непотрібно було нажимати цю кнопку",
+                        "Інформація", JOptionPane.WARNING_MESSAGE);} });
+        JButton button1 = new JButton("Вихід");
+        button1.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
         if (JOptionPane.showConfirmDialog(button, "ви впевнені що хочете вийти?") ==
                 JOptionPane.YES_OPTION)
-            System.exit(0);
+            System.exit(0);} });
+
+        panel.add(button);
+        panel.add(button1);
+
         setContentPane(panel);
         setSize(800, 800);
     }
