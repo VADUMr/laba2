@@ -9,7 +9,6 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Arrays;
-import java.util.Objects;
 
 public class LoginSystem extends JFrame {
     LoginSystem(){
@@ -61,7 +60,7 @@ public class LoginSystem extends JFrame {
 
         JButton ClearButton = new JButton("Очистити");
         ClearButton.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+            public void actionPerformed(ActionEvent b) {
                 passwordField.setText("");
                 textField.setText("");
             } });
